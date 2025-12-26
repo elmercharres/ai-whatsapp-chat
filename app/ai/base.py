@@ -1,7 +1,11 @@
 from abc import ABC, abstractmethod
-from typing import Dict, Any
 
-class AIProvider(ABC):
+class AIResponse:
+    def __init__(self, text: str, usage: dict | None = None):
+        self.text = text
+        self.usage = usage or {}
+
+class AIAdapter(ABC):
 
     @abstractmethod
     async def generate(
@@ -9,18 +13,6 @@ class AIProvider(ABC):
         prompt: str,
         *,
         temperature: float = 0.7,
-        max_tokens: int = 512,
-        context: Dict[str, Any] | None = None
-    ) -> Dict[str, Any]:
-        """
-        Returns:
-        {
-          "text": str,
-          "usage": {
-            "input_tokens": int,
-            "output_tokens": int
-          },
-          "model": str
-        }
-        """
+        max_tokens: int = 512
+    ) -> AIResponse:
         pass

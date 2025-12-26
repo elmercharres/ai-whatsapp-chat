@@ -1,30 +1,9 @@
-from dataclasses import dataclass
-from typing import Dict
-from app.ai.base import AIProvider
+from app.ai.openai_adapter import OpenAIAdapter
+from app.ai.claude_adapter import ClaudeAdapter
+from app.ai.gemini_adapter import GeminiAdapter
 
-@dataclass
-class AIModelConfig:
-    name: str
-    provider: str
-    cost_tier: str        # low | medium | high
-    max_context: int
-    supports_tools: bool
-    instance: AIProvider
-
-
-class AIModelRegistry:
-    _models: Dict[str, AIModelConfig] = {}
-
-    @classmethod
-    def register(cls, config: AIModelConfig):
-        cls._models[config.name] = config
-
-    @classmethod
-    def get(cls, model_name: str) -> AIModelConfig:
-        if model_name not in cls._models:
-            raise ValueError(f"Model '{model_name}' not registered")
-        return cls._models[model_name]
-
-    @classmethod
-    def all(cls):
-        return cls._models
+MODEL_REGISTRY = {
+    "gpt-4o-mini": OpenAIAdapter("gpt-4o-mini"),
+    "claude-sonnet-4-5": ClaudeAdapter("claude-sonnet-4-5"),
+    "gemini-1.5-pro": GeminiAdapter("gemini-1.5-pro"),
+}
