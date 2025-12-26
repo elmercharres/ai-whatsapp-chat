@@ -3,7 +3,7 @@ Logging configuration for the application.
 """
 import logging
 import sys
-from app.config import get_settings
+from app.core.config import get_settings
 
 settings = get_settings()
 

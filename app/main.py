@@ -1,5 +1,8 @@
 from fastapi import FastAPI
+from app.core.logging import setup_logging
 from app.api import chat, campaigns, orders, admin
+
+setup_logging()
 
 app = FastAPI(
     title="AI Chat SaaS",

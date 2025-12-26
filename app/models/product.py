@@ -4,7 +4,7 @@ Each product belongs to a tenant and can be part of orders.
 """
 from sqlalchemy import String, Float, Boolean, ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column
-from app.database import Base
+from app.core.database import Base
 import uuid
 
 class Product(Base):

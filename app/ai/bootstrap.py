@@ -1,7 +1,7 @@
 from app.ai.registry import AIModelRegistry, AIModelConfig
 from app.ai.providers.openai_provider import OpenAIProvider
 from app.ai.providers.claude_provider import ClaudeProvider
-from app.config import settings
+from app.core.config import settings
 
 AIModelRegistry.register(
     AIModelConfig(

@@ -4,7 +4,7 @@ Each order belongs to a tenant and contains order items.
 """
 from sqlalchemy import String, ForeignKey, JSON
 from sqlalchemy.orm import Mapped, mapped_column
-from app.database import Base
+from app.core.database import Base
 import uuid
 
 class Order(Base):
